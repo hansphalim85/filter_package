@@ -2,7 +2,7 @@
     "name": "hans/filter_package",
     "description": "product filter, filtering category, subcategory and manufaturer",
     "type": "composer-plugin",
-    "license": "IMT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Hans Halim",
