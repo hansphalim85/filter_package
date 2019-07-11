@@ -6,12 +6,16 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit14d97d58296fff79273f410ba7a48d0c
 {
+    public static $files = array (
+        'bdf151f62a69e3ca51f07e0bd032de74' => __DIR__ . '/..' . '/lincanbin/php-pdo-mysql-class/src/PDO.class.php',
+    );
+
     public static $prefixesPsr0 = array (
         'F' => 
         array (
             'FilterPackage' => 
             array (
-                0 => __DIR__ . '/../filter_package' . '/src',
+                0 => __DIR__ . '/../..' . '/src',
             ),
         ),
     );

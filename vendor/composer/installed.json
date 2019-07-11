@@ -1,1 +1,48 @@
-[]
+[
+    {
+        "name": "lincanbin/php-pdo-mysql-class",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/lincanbin/PHP-PDO-MySQL-Class.git",
+            "reference": "a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/lincanbin/PHP-PDO-MySQL-Class/zipball/a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee",
+            "reference": "a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee",
+            "shasum": ""
+        },
+        "require": {
+            "ext-pdo": "*",
+            "ext-pdo_mysql": "*",
+            "php": ">=5.3.6"
+        },
+        "time": "2019-07-02T12:01:00+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/PDO.class.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "lincanbin",
+                "email": "lincanbin@hotmail.com"
+            }
+        ],
+        "description": "A PHP MySQL PDO class similar to the the Python MySQLdb, which supports iterator and parameter binding when using 'WHERE IN' statement.",
+        "keywords": [
+            "database",
+            "iterator",
+            "mysql",
+            "pdo"
+        ]
+    }
+]
