@@ -1,7 +1,7 @@
 {
     "name": "hans/filter_package",
     "description": "product filter, filtering category, subcategory and manufaturer",
-    "type": "composer-plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
