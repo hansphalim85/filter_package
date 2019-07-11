@@ -4,59 +4,77 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d9dbaea5bca77249c057b0d6a24c772",
+    "content-hash": "b9b9820b349214ceadebca764192e929",
     "packages": [
         {
-            "name": "lincanbin/php-pdo-mysql-class",
-            "version": "dev-master",
+            "name": "aura/sqlquery",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lincanbin/PHP-PDO-MySQL-Class.git",
-                "reference": "a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee"
+                "url": "https://github.com/auraphp/Aura.SqlQuery.git",
+                "reference": "dd81b57aeb43628180a9c70a4df58d872024d7f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lincanbin/PHP-PDO-MySQL-Class/zipball/a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee",
-                "reference": "a6a1afcb7ac0722090cf284a6f0cad7d8eeac6ee",
+                "url": "https://api.github.com/repos/auraphp/Aura.SqlQuery/zipball/dd81b57aeb43628180a9c70a4df58d872024d7f2",
+                "reference": "dd81b57aeb43628180a9c70a4df58d872024d7f2",
                 "shasum": ""
             },
             "require": {
-                "ext-pdo": "*",
-                "ext-pdo_mysql": "*",
-                "php": ">=5.3.6"
+                "php": ">=5.3.9"
+            },
+            "suggest": {
+                "aura/sql": "Provides an extension to the native PDO along with a profiler and connection locator. Use version 2.*."
             },
             "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library"
+                }
+            },
             "autoload": {
-                "files": [
-                    "src/PDO.class.php"
-                ]
+                "psr-4": {
+                    "Aura\\SqlQuery\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
-                    "name": "lincanbin",
-                    "email": "lincanbin@hotmail.com"
+                    "name": "Aura.SqlQuery Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.SqlQuery/contributors"
                 }
             ],
-            "description": "A PHP MySQL PDO class similar to the the Python MySQLdb, which supports iterator and parameter binding when using 'WHERE IN' statement.",
+            "description": "Object-oriented query builders for MySQL, Postgres, SQLite, and SQLServer; can be used with any database connection library.",
+            "homepage": "https://github.com/auraphp/Aura.SqlQuery",
             "keywords": [
                 "database",
-                "iterator",
+                "db",
+                "delete",
+                "dml",
+                "insert",
                 "mysql",
-                "pdo"
+                "pdo",
+                "pgsql",
+                "postgres",
+                "postgresql",
+                "query",
+                "select",
+                "sql",
+                "sql server",
+                "sqlite",
+                "sqlserver",
+                "update"
             ],
-            "time": "2019-07-02T12:01:00+00:00"
+            "time": "2016-10-03T20:34:56+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "lincanbin/php-pdo-mysql-class": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

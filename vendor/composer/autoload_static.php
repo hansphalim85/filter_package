@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit14d97d58296fff79273f410ba7a48d0c
 {
-    public static $files = array (
-        'bdf151f62a69e3ca51f07e0bd032de74' => __DIR__ . '/..' . '/lincanbin/php-pdo-mysql-class/src/PDO.class.php',
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'Aura\\SqlQuery\\' => 14,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Aura\\SqlQuery\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/sqlquery/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -23,6 +33,8 @@ class ComposerStaticInit14d97d58296fff79273f410ba7a48d0c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit14d97d58296fff79273f410ba7a48d0c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit14d97d58296fff79273f410ba7a48d0c::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit14d97d58296fff79273f410ba7a48d0c::$prefixesPsr0;
 
         }, null, ClassLoader::class);
