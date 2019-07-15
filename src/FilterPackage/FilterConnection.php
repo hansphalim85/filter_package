@@ -3,8 +3,7 @@
 
 namespace FilterPackage;
 
-chdir(__DIR__);
-require ('../../vendor/autoload.php');
+require_once 'vendor/autoload.php'; // Autoload files using Composer autoload
 
 use Aura\SqlQuery\QueryFactory;
 use Aura\Sql\ExtendedPdo;
