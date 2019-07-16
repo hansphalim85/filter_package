@@ -24,3 +24,4 @@ $filter = new Filter(
 ```
 $filterList = $filter->getFilterFromQuery($query);
 ```
+* the result will return as an array
