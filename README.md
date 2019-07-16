@@ -22,6 +22,24 @@ $filter = new Filter(
 
 * call the function
 ```
+$query = "SELECT 
+  p.prdid,
+  p.model,
+  c.catid,
+  c.catname,
+  s.subid,
+  s.subname,
+  m.manid,
+  m.manname 
+FROM
+  product p 
+  LEFT JOIN category c 
+    ON c.catid = p.catid 
+  LEFT JOIN subcategory s 
+    ON s.subid = p.subid 
+  LEFT JOIN manufacturer m 
+    ON m.manid = p.manid";
+    
 $filterList = $filter->getFilterFromQuery($query);
 ```
 or manually build when the query is too heavy
