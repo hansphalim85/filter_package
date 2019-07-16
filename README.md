@@ -24,9 +24,9 @@ $filter = new Filter(
 ```
 $filterList = $filter->getFilterFromQuery($query);
 ```
-or manuallty build when the query is too heavy
+or manually build when the query is too heavy
 ```
-$filterList = $filter->getFilterFromQuery($query);
+$filterList = $filter->getFilterManually($query);
 ```
 
 * the result will return as an array
