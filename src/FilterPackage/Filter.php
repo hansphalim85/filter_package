@@ -4,7 +4,6 @@
 namespace FilterPackage;
 
 use FilterPackage\FilterConnection;
-use Exception;
 
 class Filter extends FilterConnection
 {
@@ -20,8 +19,6 @@ class Filter extends FilterConnection
 
     public function __construct($db, $host, $dbName, $username, $password)
     {
-        $exception = new Exception();
-
         $this->_category = array();
         $this->_subcategory = array();
         $this->_manufacturer = array();
@@ -148,7 +145,7 @@ class Filter extends FilterConnection
             array('catname', 'subname')
         );
 
-        $result['man'] = $this->_buildFilterArray(
+        $result['manufacturer'] = $this->_buildFilterArray(
             array('manid', 'manname'),
             array('manname')
         );
@@ -191,17 +188,17 @@ class Filter extends FilterConnection
         if (count($groupBy) == 2) {
             // only category
             foreach ($rows as $row) {
-                $filterList[$row['select_0']]['catname'] = $row['select_1'];
-                $filterList[$row['select_0']]['catcount'] = $row['group_count'];
+                $filterList[$row['select_0']][$selects['select_1']] = $row['select_1'];
+                $filterList[$row['select_0']]['count'] = $row['group_count'];
             }
         } else {
             // category and subcategory
             $lastCatID = 0;
             $countCatID = 0;
             foreach ($rows as $row) {
-                $filterList[$row['select_0']]['catname'] = $row['select_1'];
-                $filterList[$row['select_0']][$row['select_2']]['subname'] = $row['select_3'];
-                $filterList[$row['select_0']][$row['select_2']]['subcount'] = $row['group_count'];
+                $filterList[$row['select_0']][$selects['select_1']] = $row['select_1'];
+                $filterList[$row['select_0']][$row['select_2']][$selects['select_3']] = $row['select_3'];
+                $filterList[$row['select_0']][$row['select_2']]['count'] = $row['group_count'];
 
                 if ($lastCatID == 0) {
                     $lastCatID = $row['select_0'];
@@ -210,7 +207,7 @@ class Filter extends FilterConnection
                     if ($lastCatID == $row['select_0']) {
                         $countCatID += $row['group_count'];
                     } else {
-                        $filterList[$lastCatID]['catcount'] = $countCatID;
+                        $filterList[$lastCatID]['count'] = $countCatID;
 
                         $lastCatID = $row['select_0'];
                         $countCatID = $row['group_count'];
@@ -218,9 +215,48 @@ class Filter extends FilterConnection
                 }
             }
 
-            $filterList[$lastCatID]['catcount'] = $countCatID;
+            $filterList[$lastCatID]['count'] = $countCatID;
         }
 
         return $filterList;
+    }
+
+    public function getFilterManually($query, $parameters = array())
+    {
+        $rows = $this->_selectRaw($query, $parameters);
+
+        $result = array();
+
+        $result['cat_subcat'] = array();
+
+        $result['manufacturer'] = array();
+
+        foreach ($rows as $row) {
+            // category
+            $result['cat_subcat'][$row['catid']]['catname'] = $row['catname'];
+            if (!isset($result['cat_subcat'][$row['catid']]['count'])) {
+                $result['cat_subcat'][$row['catid']]['count'] = 1;
+            } else {
+                $result['cat_subcat'][$row['catid']]['count']++;
+            }
+
+            //subcategory
+            $result['cat_subcat'][$row['catid']][$row['subid']]['subname'] = $row['subname'];
+            if (!isset($result['cat_subcat'][$row['catid']][$row['subid']]['count'])) {
+                $result['cat_subcat'][$row['catid']][$row['subid']]['count'] = 1;
+            } else {
+                $result['cat_subcat'][$row['catid']][$row['subid']]['count']++;
+            }
+
+            //manufacturer
+            $result['manufacturer'][$row['manid']]['manname'] = $row['manname'];
+            if (!isset($result['manufacturer'][$row['manid']]['count'])) {
+                $result['manufacturer'][$row['manid']]['count'] = 1;
+            } else {
+                $result['manufacturer'][$row['manid']]['count']++;
+            }
+        }
+
+        return $result;
     }
 }

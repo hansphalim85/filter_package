@@ -8,6 +8,7 @@ require_once 'vendor/autoload.php'; // Autoload files using Composer autoload
 use Aura\SqlQuery\QueryFactory;
 use Aura\Sql\ExtendedPdo;
 use mysql_xdevapi\Exception;
+use PDO;
 
 
 class FilterConnection
@@ -65,15 +66,20 @@ class FilterConnection
 
     protected function _selectRaw($query, $parameters = array())
     {
-        $sth = $this->_pdo->prepare($query);
-        if (!empty($parameters)) {
-            $sth->execute($parameters);
-        } else {
-            $sth->execute();
-        }
-        $result = $sth->fetchAll();
+        try {
+            $sth = $this->_pdo->prepare($query);
+            if (!empty($parameters)) {
+                $sth->execute($parameters);
+            } else {
+                $sth->execute();
+            }
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-        return $result;
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
     }
 
 }
